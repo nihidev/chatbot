@@ -10,6 +10,8 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 
+openai.api_key = st.secrets.OPENAI_API_KEY
+
 def get_pdf_text(pdf_docs):
     text = ""
     for pdf in pdf_docs:
@@ -65,7 +67,6 @@ def handle_userinput(user_question):
 
 
 def main():
-    load_dotenv()
     st.set_page_config(page_title="Chat with uploaded PDFs")
     st.write(css, unsafe_allow_html=True)
 

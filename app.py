@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
@@ -10,7 +11,7 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 from langchain.llms import HuggingFaceHub
 
-st.write("openai_api_key", st.secrets["OPENAI_API_KEY"])
+os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 def get_pdf_text(pdf_docs):
     text = ""
